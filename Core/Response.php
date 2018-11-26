@@ -25,13 +25,16 @@ class Response
      */
     protected $http_headers = [];
 
+    /**
+     *
+     */
     public function send ():void
     {
-        header( 'HTTP/1.1' . Self::$status_code . ' ' . Self::$status_text );
-        foreach ( Self::$http_headers as $name => $value) {
+        header( 'HTTP/1.1' . $this->status_code . ' ' . $this->status_text );
+        foreach ( $this->http_headers as $name => $value) {
             header($name . ': ' . $valus);
         }
-        echo Self::$content;
+        echo $this->content;
     }
 
     /**
@@ -39,7 +42,7 @@ class Response
      */
     public function addContent(string $content = ''):void
     {
-        Self::$content = $content;
+        $this->content = $content;
     }
 
     /**
@@ -48,8 +51,8 @@ class Response
      */
     public function addStatusCode(int $status_code, string $status_text = ''):void
     {
-        Self::$status_code = $status_code;
-        Self::$status_text = $status_text;
+        $this->status_code = $status_code;
+        $this->status_text = $status_text;
     }
 
     /**
@@ -58,6 +61,6 @@ class Response
      */
     public function addHttpHeader (string $name, string $value):void
     {
-        Self::$http_headers[$name] = $value;
+        $this->http_headers[$name] = $value;
     }
 }

@@ -20,7 +20,7 @@ class Router
      */
     public function __construct ($definitions): void
     {
-        Self::$routes = Self::compileRoutes($definitions);
+        $this->routes = Self::compileRoutes($definitions);
     }
 
     /**
@@ -55,7 +55,7 @@ class Router
         if ('/' !== substr($path_info, 0, 1)){
             $path_info = '/'. $path_info;
         }
-        foreach (Self::$routes as $pattern => $params) {
+        foreach ($this->routes as $pattern => $params) {
             if (preg_match('#^'.$pattern.'$#', $path_info, $matches)) {
                 $params = array_merge($params, $matches);
                 return $params;
