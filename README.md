@@ -1,0 +1,7 @@
+# perfectPHPFramework
+
+勉強用の自作フレームワーク制作
+
+参考元はperfectPHP
+
+バージョンがPHP5だったためPHP7で利用で追加されたものも利用しながら
